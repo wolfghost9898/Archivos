@@ -1,0 +1,4 @@
+OPERACION,TIPO,NOMBRE,CONTENIDO,FECHA,PROPIETARIO,PERMISOS
+0,0,/caca/cacacas/hola.txt,,26/09/18 22:27,root,664
+1,1,/caca/caca3,vacio,26/09/18 22:27,root,664
+0,0,/caca2/hola2.txt,,26/09/18 22:27,root,664

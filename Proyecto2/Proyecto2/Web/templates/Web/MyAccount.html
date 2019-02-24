@@ -1,0 +1,125 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Mi cuenta</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+            <main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/Web/Save_changes/" method="post">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="full_name" class="form-control" name="full-name"  autocomplete="off"  value="{{ Usuario.Nombre }}" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="apellido" class="col-md-4 col-form-label text-md-right">Apellido</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="apellido" class="form-control" name="apellido"   value="{{ Usuario.Apellido }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Correo</label>
+                                    <div class="col-md-6">
+                                        <input type="email" id="email_address" class="form-control" name="email-address"   value="{{ Usuario.Correo }}" autocomplete="off" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Usuario</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="user_name" class="form-control" name="username"  value="{{ Usuario.Usuario }}" disabled autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="contrasenia" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="contrasenia" class="form-control" name="contrasenia" value="{{ Usuario.Contrasenia }}" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right" >Telefono</label>
+                                    <div class="col-md-6">
+                                        <input type="Number" id="phone_number" class="form-control" value="{{ Usuario.Telefono }}" name="numero" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right" >Direccion</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="present_address" class="form-control" value="{{ Usuario.Direccion }}" name="direccion" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="genero" class="col-md-4 col-form-label text-md-right" >Genero</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="genero" required >
+                                            {% if Usuario.Genero == 'M' %}
+                                                <option value="M" selected>Masculino</option>
+                                            {% else %}
+                                                <option value="M">Masculino</option>
+                                            {% endif %}
+                                             {% if Usuario.Genero == 'F' %}
+                                                <option value="F" selected>Femenino</option>
+                                            {% else %}
+                                                <option value="F">Femenino</option>
+                                            {% endif %}
+
+                                            {% if Usuario.Genero == 'B' %}
+                                                <option value="B" selected>No Binario</option>
+                                            {% else %}
+                                                <option value="B" >No Binario</option>
+                                            {% endif %}
+
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="Fecha" class="col-md-4 col-form-label text-md-right" >Fecha Nacimiento</label>
+                                    <div class="col-md-6">
+                                        <input type="date" id="Fecha" name="fecha_nac" class="form-control" value="{{ Usuario.Fecha_nac|date:"Y-m-d" }}" required >
+                                    </div>
+                                </div>
+
+
+                                {% if Exito %}
+                                    <br>
+                                    <div class="alert alert-success" role="alert">
+                                          <strong>Exitosamente !</strong> Se han actualizado tus datos
+                                    </div>
+                                {% endif %}
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Guardar Cambios
+                                    </button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+    {% endblock pages %}

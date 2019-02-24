@@ -1,0 +1,174 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Registrar Nuevos Usuarios</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+  <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    </div>
+</nav>
+
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Registro</div>
+                        <div class="card-body">
+                            <form action="/Web/createUser/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="full_name" class="form-control" name="full-name"  autocomplete="off" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="apellido" class="col-md-4 col-form-label text-md-right">Apellido</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="apellido" class="form-control" name="apellido"  autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Correo</label>
+                                    <div class="col-md-6">
+                                        <input type="email" id="email_address" class="form-control" name="email-address" autocomplete="off" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Usuario</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="user_name" class="form-control" name="username"   autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="contrasenia" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="contrasenia" class="form-control" name="contrasenia"  autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="contrasenia2" class="col-md-4 col-form-label text-md-right">Repita Contraseña</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="contrasenia2" class="form-control" name="contrasenia2"  autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right" >Telefono</label>
+                                    <div class="col-md-6">
+                                        <input type="Number" id="phone_number" class="form-control"  name="numero" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right" >Direccion</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="present_address" class="form-control" name="direccion" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="genero" class="col-md-4 col-form-label text-md-right" >Genero</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="genero" required >
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                            <option value="B">No Binario</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="genero" class="col-md-4 col-form-label text-md-right" >Tipo</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="tipo" required >
+                                            <option value="0">Administrador</option>
+                                            <option value="2">Empleado</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="Fecha" class="col-md-4 col-form-label text-md-right" >Fecha Nacimiento</label>
+                                    <div class="col-md-6">
+                                        <input type="date" id="Fecha" name="fecha_nac" class="form-control" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="Descripcion" class="col-md-4 col-form-label text-md-right" >Razon:</label>
+                                    <div class="col-md-6">
+                                        <textarea  style="resize:none" rows = "5" cols = "60" name = "Descripcion" class="form-control" required>
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01" required aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                                </div>
+                                {% if pass %}
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <small id="passwordHelp" class="text-danger">
+                                              No coinciden las contraseñas
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if use %}
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <small id="passwordHelp" class="text-danger">
+                                              Ya existe ese usuario
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if exito %}
+                                    <br>
+                                    <div class="alert alert-success" role="alert">
+                                          <strong>Exitosamente !</strong> Se ha agregado un nuevo usuario
+                                    </div>
+                                {% endif %}
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Register
+                                    </button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+    {% endblock pages %}

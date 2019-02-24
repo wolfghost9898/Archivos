@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+
+
+        <item
+            android:id="@+id/noticias"
+            android:title="Noticias" />
+
+        <item
+            android:id="@+id/noticiasFiltradas"
+            android:title="Noticias Filtradas" />
+        <item
+            android:id="@+id/partidos"
+            android:title="Partidos" />
+
+        <item
+            android:id="@+id/JTE"
+            android:title="Jugadores o Tecnicos por Equipo" />
+
+        <item
+            android:id="@+id/JTEMa"
+            android:title="Jugadores o Tecnicos por Edad Mayor" />
+
+        <item
+            android:id="@+id/JTEMe"
+            android:title="Jugadores o Tecnicos por Edad Menor" />
+
+
+
+
+
+
+        <item
+            android:id="@+id/membresia"
+            android:title="Membresia" />
+        <item
+            android:id="@+id/logout"
+            android:title="Cerrar Sesion" />
+
+
+    </group>
+
+
+
+</menu>

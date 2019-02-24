@@ -1,0 +1,74 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>DT</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/buscarDT/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col">
+                                                <input autocomplete="off"  class="form-control form-control-lg form-control-borderless" type="search" placeholder="Ingresa DT a buscar" name="dt">
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>DT</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Equipo</th>
+                               <th>Bitacora</th>
+                               </thead>
+                                <tbody>
+         {% for DT in DT %}
+             {% if not DT.Nombre == ""  %}
+                 <tr>
+                 <td><a href="{% url 'viewDT' slug=DT.id %}">
+                        {{ DT.Nombre }}
+                </a></td>
+                <td><a href="{% url 'viewEquipoDT' slug=DT.id %}">
+                        {{ DT.Equipo.Nombre }}
+                </a></td>
+                <td><a href="{% url 'viewBitacoraDT' slug=DT.id %}">
+                        Ver
+                </a></td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+ {% endblock pages %}

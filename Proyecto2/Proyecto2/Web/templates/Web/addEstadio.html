@@ -1,0 +1,127 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Registrar Nuevos Estadios</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+  <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    </div>
+</nav>
+
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Registro</div>
+                        <div class="card-body">
+                            <form action="/Web/saveEstadio/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nombre" class="form-control" name="nombre"  autocomplete="off" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="cantidad" class="col-md-4 col-form-label text-md-right">Asientos</label>
+                                    <div class="col-md-6">
+                                        <input type="number" id="cantidad" class="form-control" name="cantidad" autocomplete="off" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="direccion" class="col-md-4 col-form-label text-md-right" >Direccion</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="direccion" class="form-control"  name="direccion" autocomplete="off" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="estado" class="col-md-4 col-form-label text-md-right" >Estado</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="estado" required >
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                            <option value="Remodelacion">Remodelacion</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="Fecha" class="col-md-4 col-form-label text-md-right" >Fecha Inauguración</label>
+                                    <div class="col-md-6">
+                                        <input type="date" id="Fecha" name="Fecha" class="form-control" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="pais" class="col-md-4 col-form-label text-md-right" >Pais</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="pais" required >
+                                            {% for Pais in Pais %}
+                                                <option value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01" required aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                {% if error %}
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <small id="passwordHelp" class="text-danger">
+                                              Ya existe ese estadio
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if exito %}
+                                    <br>
+                                    <div class="alert alert-success" role="alert">
+                                          <strong>Exitosamente !</strong> Se ha agregado un nuevo Estadio
+                                    </div>
+                                {% endif %}
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Register
+                                    </button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+    {% endblock pages %}

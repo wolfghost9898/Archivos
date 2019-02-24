@@ -1,0 +1,49 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Usuarios con mas Membresias Adquiridas</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+         <br>
+                    <h4>Usuarios con mas Membresias</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                               <th>Usuario</th>
+                               <th>Cantidad</th>
+                               </thead>
+                                <tbody>
+                                {% for Usuario in Usuario %}
+                                     <tr>
+                                     <td>{{ Usuario.1 }}</td>
+                                    <td>{{ Usuario.2 }}</td>
+                                     <td>{{  Usuario.0 }}</td>
+                                    </tr>
+                             {% endfor %}
+
+
+
+         </tbody>
+        </table>
+ <form action="/Web/usuariosmasMembresiaPDF/" method="post" >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">PDF</button>
+ </form>
+     {% endif %}
+ {% endblock pages %}

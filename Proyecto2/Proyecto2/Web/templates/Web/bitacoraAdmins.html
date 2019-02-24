@@ -1,0 +1,58 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Bitacora Admins</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <br>
+                    <h4>Bitacora</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Administrador</th>
+                                <th>Usuario Afectado</th>
+                               <th>Accion</th>
+                               <th>Descripcion</th>
+                               </thead>
+                                <tbody>
+                                {% for Bitacora in Bitacora %}
+                                 {% if not Bitacora.Usuario.Nombre == ""  %}
+                                     <tr>
+                                     <td>{{ Bitacora.Admin.Usuario }}</td>
+                                    <td>{{ Bitacora.Usuario.Usuario }}</td>
+                                     {% if Bitacora.Accion == 2 %}
+                                         <td>Activar Usuario</td>
+                                     {% elif Bitacora.Accion == 3 %}
+                                         <td>Congelar Usuario</td>
+                                     {% else %}
+                                         <td>Crear Usuario</td>
+                                      {% endif %}
+                                     <td>{{ Bitacora.Descripcion }}</td>
+                                    </tr>
+                                 {% endif %}
+                             {% endfor %}
+
+
+
+         </tbody>
+        </table>
+ <form action="/Web/bitacoraAdminsPDF/" method="post" >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-light">PDF</button>
+ </form>
+     {% endif %}
+ {% endblock pages %}

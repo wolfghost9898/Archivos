@@ -1,0 +1,123 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ searchPartido.EquipoLocal.Nombre }}-{{ searchPartido.EquipoVisita.Nombre }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/editPartido/" method="post">
+    {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <input type="hidden" name="id" value="{{ searchPartido.id }}">
+                </ul>
+                <div class="card-body">
+                    <div class="form-group row">
+                                    <label for="fecha" class="col-md-4 col-form-label text-md-right">Fecha</label>
+                                    <div class="col-md-6">
+                                        <input type="Date" id="fecha" class="form-control" name="fecha"  autocomplete="off" value="{{ searchPartido.Fecha|date:"Y-m-d" }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="asistencia" class="col-md-4 col-form-label text-md-right">Asistencia</label>
+                                    <div class="col-md-6">
+                                        <input type="number" id="asistencia" class="form-control" name="asistencia"  autocomplete="off" value="{{ searchPartido.Asistencia}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="resultado" class="col-md-4 col-form-label text-md-right">Resultado</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="resultado" class="form-control" name="resultado"  autocomplete="off" value="{{ searchPartido.Resultado}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="estado" class="col-md-4 col-form-label text-md-right">Estado</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="estado" class="form-control" name="estado"  autocomplete="off" value="{{ searchPartido.Estado}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="equipoLocal" class="col-md-4 col-form-label text-md-right" >Equipo Local</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="equipoLocal" >
+                                            {% for Equipo in Equipo %}
+                                                {% if Equipo == searchPartido.EquipoLocal %}
+                                                    <option selected value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="equipoVisita" class="col-md-4 col-form-label text-md-right" >Equipo Visita</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="equipoVisita" required >
+                                            {% for Equipo in Equipo %}
+                                                {% if Equipo == searchPartido.EquipoVisita %}
+                                                    <option selected value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="competencia" class="col-md-4 col-form-label text-md-right" >Competencia</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="competencia" required >
+                                            {% for Competencia in Competencia %}
+                                                {% if Competencia == searchPartido.Competencia %}
+                                                    <option selected value="{{ Competencia.id }}">{{ Competencia.Nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Competencia.id }}">{{ Competencia.Nombre }}</option>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="estadio" class="col-md-4 col-form-label text-md-right" >Estadio</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="estadio"  >
+                                            {% for Estadio in Estadio %}
+                                                {% if Estadio == searchPartido.Estadio %}
+                                                    <option selected value="{{ Estadio.id }}">{{ Estadio.Nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Estadio.id }}">{{ Estadio.Nombre }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                    <button type="submit" name="eliminarPartido"  class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="actualizarPartido" class="btn btn-success">Actualizar</button>
+                </div>
+            </div>
+         </div>
+         </div>
+    </form>
+     {% if editado %}
+        <br>
+         <div class="alert alert-success" role="alert">
+             <strong>Exitosamente !</strong> Se han actualizado los datos del partido
+         </div>
+     {% endif %}
+    {% endblock pages %}

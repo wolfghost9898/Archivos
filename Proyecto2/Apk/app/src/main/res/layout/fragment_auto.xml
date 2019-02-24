@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".AutoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Agarrar"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="#E91E63"
+            android:text="Agarrar"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/Soltar"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:background="#E91E63"
+            android:text="Soltar"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
+</LinearLayout>

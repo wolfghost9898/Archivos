@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>Soccer Stats</title>
+{%  endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/Web/">SoccerStats</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    {% if client == 1 or client == 2  or client == 3 %}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mi cuenta
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/Web/MyAccount/">Gestionar Cuenta</a>
+            <a class="dropdown-item" href="/Web/ChangeProfilePicture/">Cambiar Foto de Perfil</a>
+            <a class="dropdown-item" href="/Web/DeleteAccount/">Eliminar Cuenta</a>
+        </li>
+
+
+    {% endif %}
+    {% if client == 2 %}
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Noticias
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/AllNoticies/">Noticias</a>
+                {% if Membresia == 1 %}
+                    <a class="dropdown-item" href="/Web/filterNoticias/">Noticias Filtradas</a>
+                {% endif %}
+            </div>
+         </li>
+        <li >
+            <a class="nav-link" href="/Web/Membresia">Membresia <span class="sr-only"></span></a>
+        </li>
+        <li>
+            <a class="nav-link" href="/Web/partidosUser">Partidos <span class="sr-only"></span></a>
+        </li>
+        {% if Membresia == 1 %}
+             <li>
+                <a class="nav-link" href="/Web/equiposUser">Equipos<span class="sr-only"></span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Consultas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/jugadoresTecnicoEquipo/">Jugadores/Tecnico por Equipo</a>
+                <a class="dropdown-item" href="/Web/jugadoresTecnicosEdad/">Jugadores/Tecnico por Edad (Mayor)</a>
+                <a class="dropdown-item" href="/Web/jugadoresTecnicosEdadM/">Jugadores/Tecnico por Edad (Menor)</a>
+                <a class="dropdown-item" href="/Web/equiposCompeticionC/">Equipos que participaron en una competicion</a>
+                <a class="dropdown-item" href="/Web/equiposPorPais/">Equipos por Pais</a>
+                <a class="dropdown-item" href="/Web/equiposAnios/">Equipos con ciertos años de Antiguedad</a>
+                <a class="dropdown-item" href="/Web/estadiosPorPais/">Estadios por Pais</a>
+                <a class="dropdown-item" href="/Web/estadiosPorCapacidad/">Estadios por Capacidad</a>
+                <a class="dropdown-item" href="/Web/historialDeEquipo/">Historial de Equipo</a>
+                <a class="dropdown-item" href="/Web/EquipoJugadorTecnico/">Equipos donde estuvo Jugador/Tecnico</a>
+                <a class="dropdown-item" href="/Web/JugadoresCompeticionIncidencia/">Jugadores con mas incidencias en una Competicion</a>
+                <a class="dropdown-item" href="/Web/JugadoresCompeticionIncidenciaAnio/">Jugadores con mas incidencias en una Competicion(Año)</a>
+                <a class="dropdown-item" href="/Web/competenciasGanandas/">Equipo con competencias ganadas</a>
+                <a class="dropdown-item" href="/Web/partidoPorAnio/">Partidos por Año</a>
+                <a class="dropdown-item" href="/Web/EquipovEquipo/">Equipo vs Equipo</a>
+
+
+            </div>
+         </li>
+         {% endif %}
+    {% endif %}
+
+    {% if client == 1 %}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/usuariosSuscritos/">Usuarios Suscritos </a>
+                <a class="dropdown-item" href="/Web/usuariosMembresia/">Usuarios Membresia</a>
+                <a class="dropdown-item" href="/Web/usuariosmasMembresia/">Usuarios con mas Membresias Adquiridas</a>
+                <a class="dropdown-item" href="/Web/usuariosGenero/">Usuarios por Genero</a>
+                <a class="dropdown-item" href="/Web/usuarioEdad/">Usuarios por Edad</a>
+                <a class="dropdown-item" href="/Web/empleadosMASOMENOS/">Empleados MAS/MENOS han publicado Noticias</a>
+                <a class="dropdown-item" href="/Web/empleadosMASOMENOSEquipo/">Empleados MAS/MENOS han publicado Noticias por Equipo</a>
+                <a class="dropdown-item" href="/Web/bitacoraAdmins/">Bitacora de Admins</a>
+            </div>
+        </li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gestion de Usuarios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/newUser/">Crear</a>
+                <a class="dropdown-item" href="/Web/changeUser/">Editar</a>
+            </div>
+        </li>
+    {% endif %}
+
+     {% if client == 1 or client == 3 %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Noticia
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addNoticia/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarNoticia/">Gestionar Noticias</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pais
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/Pais/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarPais/">Buscar</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Equipos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/equipo/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarEquipo/">Buscar</a>
+                <a class="dropdown-item" href="/Web/cargaEquipo/">Carga Masiva</a>
+            </div>
+        </li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Estadio
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addEstadio/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarEstadio/">Buscar</a>
+                <a class="dropdown-item" href="/Web/cargaEstadio/">Carga Masiva</a>
+            </div>
+        </li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jugador
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addJugador/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarJugador/">Buscar</a>
+                <a class="dropdown-item" href="/Web/cargarJugador/">Carga Masiva</a>
+            </div>
+        </li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                DT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addDT/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarDT/">Buscar</a>
+                <a class="dropdown-item" href="/Web/cargarDT/">Carga Masiva</a>
+            </div>
+        </li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Partido
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addPartido/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarPartido/">Buscar Partido</a>
+                <a class="dropdown-item" href="/Web/cargarIncidencia/">Carga Masiva</a>
+            </div>
+
+        </li>
+
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Competencia
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/Web/addCompeticion/">Crear</a>
+                <a class="dropdown-item" href="/Web/buscarCompetencia/">Gestionar Competencia</a>
+                <a class="dropdown-item" href="/Web/cargarCompetencia/">Carga Masiva</a>
+            </div>
+
+        </li>
+    {% endif %}
+
+    </ul>
+  </div>
+<div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+    {% if client == 1  or client == 2 or client == 3 %}
+        <ul class="navbar-nav text-right">
+            <li class="nav-item active">
+                <img src="{{    Usuario.Imagen.url  }}" class="rounded-circle" width="100" height="100"/>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Web/Logout/">Logout</a>
+            </li>
+        </ul>
+    {% endif %}
+
+
+    {% if client == 0 %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                 <a class="nav-link" href="/Web/Login">Login</a>
+             </li>
+        </ul>
+    {% endif %}
+        </div>
+</nav>
+     {% block pages %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Heading Row -->
+      <div class="row my-4">
+
+        <div class="col-lg-8">
+                <iframe class="embed-responsive-item" src="/media/videoplayback.mp4" width="100%" height="50%"></iframe>
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+          <h1>SoccerStar</h1>
+            <p>Queríamos construir un lugar para unir todo el fútbol del mundo. Por supuesto esa es una tarea enorme, por eso contamos contigo para que contribuyas a formar la mayor colección de partidos completos de fútbol online. Nos gustaría convertirnos en la mayor comunidad de fútbol en la red. ¡Todo el mundo es bienvenido
+                <!doctype html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport"
+                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                </head>
+                <body>
+
+                </body>
+                </html></p>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+
+
+
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Mision</h2>
+              <p class="card-text">Transformar el panorama de la comunicación mediante una combinación irresistible y diversa de
+                  contenido, tecnología y servicio convirtiendo a SoccerStar en la selección favorita del consumidor.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Vision</h2>
+              <p class="card-text">Hacer de SoccerStar® la mejor experiencia sobre plataformas de futbol en internet.</p>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">Contactanos</h2>
+              <p class="card-text">carloshernandez.ch779@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-md-4 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Carlos Hernandez 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+
+  </body>
+    {% endblock pages %}
+{% endblock %}
+

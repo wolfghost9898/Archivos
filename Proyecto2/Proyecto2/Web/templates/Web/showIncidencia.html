@@ -1,0 +1,38 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Incidencias</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+            <div class="container">
+                <div class="row">
+                <br>
+                    <div class="col-md-12">
+                    <br>
+                    <h4>{{ Partido.EquipoLocal.Nombre }}-{{ Partido.EquipoVisita.Nombre }}</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Equipo</th>
+                                <th>Tipo</th>
+                               <th>Minuto</th>
+                               <th>Jugador</th>
+                               </thead>
+                                <tbody>
+         {% for Incidencia in Incidencia %}
+             {% if not Incidencia.Tipo == ""  %}
+                 <td>{{ Incidencia.Equipo.Nombre }}</td>
+                 <td>{{ Incidencia.Descripcion }}</td>
+                 <td>{{ Incidencia.Minuto }}</td>
+                 <td>{{ Incidencia.Jugador.Nombre }}</td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+ {% endblock pages %}

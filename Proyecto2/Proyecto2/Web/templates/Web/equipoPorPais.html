@@ -1,0 +1,75 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Equipos por Pais</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/equiposPorPais/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="form-group row">
+                                                <label for="pais" class="col-md-4 col-form-label text-md-right" >Pais</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" name="pais" required >
+                                                        {% for Pais in Pais %}
+                                                            <option value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>º
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Equipos</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Pais</th>
+                               <th>Fecha</th>
+                               </thead>
+                                <tbody>
+                                {% for Equipo in Equipo %}
+                                 {% if not Equipo.Nombre == ""  %}
+                                     <tr>
+                                     <td>{{ Equipo.Nombre }}</td>
+                                     <td>{{ Equipo.Pais.nombre }}</td>
+                                     <td>{{  Equipo.Fecha }}</td>
+                                    </tr>
+                                 {% endif %}
+                             {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+ {% endblock pages %}

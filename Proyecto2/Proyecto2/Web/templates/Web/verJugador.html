@@ -1,0 +1,98 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ searchJugador.Nombre }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/editJugador/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+         <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                   <div class="form-group row">
+                                    <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nombre" class="form-control" name="nombre"  autocomplete="off" value="{{ searchJugador.Nombre }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="posicion" class="col-md-4 col-form-label text-md-right">Posicion</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="posicion" class="form-control" name="posicion"  autocomplete="off" value="{{ searchJugador.Posicion }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="estado" class="col-md-4 col-form-label text-md-right">Estado</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="estado" class="form-control" name="estado"  autocomplete="off" value="{{ searchJugador.Estado }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fechanac" class="col-md-4 col-form-label text-md-right">Fecha Nacimiento</label>
+                                    <div class="col-md-6">
+                                        <input type="Date" id="fechanac" class="form-control" name="fechanac"  autocomplete="off" value="{{ searchJugador.Fecha_nac|date:"Y-m-d" }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fechainicio" class="col-md-4 col-form-label text-md-right">Fecha Inicio</label>
+                                    <div class="col-md-6">
+                                        <input type="Date" readonly="true" id="fechainicio" class="form-control" name="fechainicio"  autocomplete="off" value="{{ searchJugador.Fecha_inicio|date:"Y-m-d" }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fechafin" class="col-md-4 col-form-label text-md-right">Fecha Fin</label>
+                                    <div class="col-md-6">
+                                        <input type="Date" id="fechafin" class="form-control" name="fechafin"  autocomplete="off" value="{{ searchJugador.Fecha_fin|date:"Y-m-d" }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="equipo" class="col-md-4 col-form-label text-md-right">Equipo</label>
+                                    <div class="col-md-6">
+                                        <input type="text" readonly="true" id="equipo" class="form-control" name="equipo"  autocomplete="off" value="{{ searchJugador.Equipo.Nombre}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="pais" class="col-md-4 col-form-label text-md-right" >Pais</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="pais" required >
+                                            {% for Pais in Pais %}
+                                                {% if Pais == searchJugador.Pais %}
+                                                    <option selected value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                <ul class="list-group list-group-flush">
+                    <input type="hidden" name="id" value="{{ searchJugador.id }}">
+                </ul>
+                <div class="card-body">
+                    <button type="submit" name="eliminarJugador"  class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="ActualizarJugador" class="btn btn-success">Actualizar</button>
+                </div>
+            </div>
+         </div>
+         </div>
+    </form>
+
+
+     {% if editado %}
+        <br>
+         <div class="alert alert-success" role="alert">
+             <strong>Exitosamente !</strong> Se han actualizado los datos del Jugador
+         </div>
+     {% endif %}
+    {% endblock pages %}

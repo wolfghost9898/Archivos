@@ -1,0 +1,42 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Muro</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     {% for Noticia in Noticia %}
+         <br>
+        <div style="background-color: #EAEAEA;padding-bottom: 3%">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <h1 class="mt-4">{{ Noticia.Titulo }}</h1>
+                         <p class="lead">
+                            by
+                             <a href="">{{ Noticia.Empleado.Nombre }}</a>
+                        </p>
+                        <hr>
+                        <p>Publicado : {{ Noticia.Fecha|date:"Y-m-d H:m" }}</p>
+                        <hr>
+                        <img class="img-fluid rounded" src="{{ Noticia.Foto.url }}" alt="">
+                        <hr>
+                        <p class="lead">
+                            {{ Noticia.Cuerpo }}
+                        </p>
+                    </div>
+                 </div>
+            </div>
+     </div>
+        <br>
+     {% endfor %}
+
+
+
+
+    {% endblock pages %}

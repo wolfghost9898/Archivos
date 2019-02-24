@@ -1,0 +1,16 @@
+Fecha;Pais_Estadio;Estadio;Estado;Asistencia;Pais_Local;Equipo_Local;Pais_Visita;Equipo_Visita;Resultado;Incidencia;Minuto;Equipo_Incidencia;Jugador;Competicion;Año
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;1-0;Gol;5;Local;Lionel Messi;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;2-0;Gol;7;Local;Lionel Messi;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;3-0;Gol;11;Local;Lionel Messi;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;4-0;Gol;30;Local;Lionel Messi;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-0;Gol;60;Local;Lionel Messi;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-1;Gol;65;Visita;Marcelo;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-2;Gol;70;Visita;Luka Modric;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-2;Tarjeta Amarilla;25;Local;Ivan Rakitic;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-2;Tarjeta Roja;37;Local;Arthur;LaLiga;2018
+15/09/2018;España;Camp Nou;Finalizado;88550;España;Barcelona;España;Real Madrid;5-2;Tarjeta Amarilla;45;Local;Lionel Messi;LaLiga;2018
+18/12/2019;Inglaterra;Stamford Bridge;Sin Iniciar;;Inglaterra;Chelsea;Inglaterra;Arsenal;;;;;;Premier League;2017
+18/12/2019;Inglaterra;Old Trafford;Suspendido;;Inglaterra;Manchester United;Inglaterra;Liverpool;;;;;;Premier League;2017
+18/12/2019;Italia;San Siro;En Curso;67535;Italia;Milan;Italia;Roma;1-0;Gol;10;Visita;Javier Pastore;Serie A;2017
+18/12/2019;Italia;San Siro;En Curso;67535;Italia;Milan;Italia;Roma;1-1;Gol;10;Local;Javier Pastore;Serie A;2017
+18/12/2019;Italia;San Siro;En Curso;67535;Italia;Milan;Italia;Roma;1-1;Falta;10;Local;Justin Kluivert;Serie A;2017

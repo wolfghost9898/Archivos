@@ -1,0 +1,40 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Competencia</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+            <div class="container">
+                <div class="row">
+                <br>
+                    <div class="col-md-12">
+                    <br>
+                    <h2>Competencia: {{ Competicion.Nombre }}</h2>
+                    {% if Competicion.Campeon != null %}
+                        <h4>Campeon: {{ Competicion.Campeon.Nombre }}</h4>
+                    {% else %}
+                        <h4>Campeon: No hay</h4>
+                    {% endif %}
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Equipo</th>
+                                <th>Pais</th>
+                               </thead>
+                                <tbody>
+         {% for Historial in Historial %}
+             {% if not Historial.Equipo.Nombre == ""  %}
+                 <tr>
+                 <td>{{ Historial.Equipo.Nombre }}</td>
+                 <td>{{ Historial.Equipo.Pais.nombre }}</td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+ {% endblock pages %}

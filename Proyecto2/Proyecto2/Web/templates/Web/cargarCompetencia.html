@@ -1,0 +1,86 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Carga Masiva Competencia</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+  <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    </div>
+</nav>
+
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Carga Masiva</div>
+                        <div class="card-body">
+                            <form action="/Web/uploadCargaCompetencia/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <br>
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Carga Masiva</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="archivo" id="inputGroupFile01" required aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                {% if error %}
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <small id="passwordHelp" class="text-danger">
+                                              Solo se pueden subir archivos csv
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if exito %}
+                                    <br>
+                                    <div class="alert alert-success" role="alert">
+                                          <strong>Exitosamente !</strong> Se ha cargado exitosamente su Archivo
+                                    </div>
+                                {% endif %}
+                                {% if errorException %}
+                                    <br>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <small id="passwordHelp" class="text-danger">
+                                              ERROR: {{ mensaje }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Subir
+                                    </button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+    {% endblock pages %}

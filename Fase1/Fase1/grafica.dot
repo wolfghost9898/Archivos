@@ -1,0 +1,261 @@
+digraph G{ rankdir="LR"
+subgraph inode_0{
+inodo_0 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 0 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> 6 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 664 </TD></TR>
+</TABLE>>]
+}
+inodo_0->bloque_0;
+bloque_0 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Carpeta 0 </TD></TR>
+<TR> <TD> b_name </TD> <TD> b_inode </TD></TR>
+<TR> <TD> . </TD> <TD> 0 </TD></TR>
+<TR> <TD> .. </TD> <TD> 0 </TD></TR>
+<TR> <TD> user.txt </TD> <TD> 1 </TD></TR>
+<TR> <TD> caca </TD> <TD> 2 </TD></TR>
+</TABLE>>];
+bloque_0->inodo_1;
+bloque_0->inodo_2;
+inodo_0->bloque_6;
+bloque_6 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Carpeta 6 </TD></TR>
+<TR> <TD> b_name </TD> <TD> b_inode </TD></TR>
+<TR> <TD> caca2 </TD> <TD> 6 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+</TABLE>>];
+bloque_6->inodo_6;
+subgraph inode_1{
+inodo_1 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 1 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 59 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 755 </TD></TR>
+</TABLE>>]
+}
+inodo_1->bloque_1;
+bloque_1 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Archivo 1 </TD></TR>
+<TR> <TD COLSPAN="2"> 1,G,root
+1,U,root,root,123
+2,G,prueba
+2,U,root,usuario,123
+ </TD></TR>
+</TABLE>>]
+subgraph inode_2{
+inodo_2 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 2 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 2 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 664 </TD></TR>
+</TABLE>>]
+}
+inodo_2->bloque_2;
+bloque_2 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Carpeta 2 </TD></TR>
+<TR> <TD> b_name </TD> <TD> b_inode </TD></TR>
+<TR> <TD> . </TD> <TD> 2 </TD></TR>
+<TR> <TD> .. </TD> <TD> 0 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+<TR> <TD> caca3 </TD> <TD> 5 </TD></TR>
+</TABLE>>];
+bloque_2->inodo_5;
+subgraph inode_4{
+inodo_4 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 4 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 30 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 4 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 664 </TD></TR>
+</TABLE>>]
+}
+inodo_4->bloque_4;
+bloque_4 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Archivo 4 </TD></TR>
+<TR> <TD COLSPAN="2"> 012345678901234567890123456789 </TD></TR>
+</TABLE>>]
+subgraph inode_5{
+inodo_5 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 5 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 5 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 707 </TD></TR>
+</TABLE>>]
+}
+inodo_5->bloque_5;
+bloque_5 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Carpeta 5 </TD></TR>
+<TR> <TD> b_name </TD> <TD> b_inode </TD></TR>
+<TR> <TD> . </TD> <TD> 5 </TD></TR>
+<TR> <TD> .. </TD> <TD> 2 </TD></TR>
+<TR> <TD> hola.txt </TD> <TD> 4 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+</TABLE>>];
+bloque_5->inodo_4;
+subgraph inode_6{
+inodo_6 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 6 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 7 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 0 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 664 </TD></TR>
+</TABLE>>]
+}
+inodo_6->bloque_7;
+bloque_7 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Carpeta 7 </TD></TR>
+<TR> <TD> b_name </TD> <TD> b_inode </TD></TR>
+<TR> <TD> . </TD> <TD> 6 </TD></TR>
+<TR> <TD> .. </TD> <TD> 0 </TD></TR>
+<TR> <TD> hola2.txt </TD> <TD> 7 </TD></TR>
+<TR> <TD>  </TD> <TD> -1 </TD></TR>
+</TABLE>>];
+bloque_7->inodo_7;
+subgraph inode_7{
+inodo_7 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Inodo 7 </TD></TR>
+<TR> <TD> i_uid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_size </TD> <TD> 10 </TD></TR>
+<TR> <TD> i_gid </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_atime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_ctime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_mtime </TD> <TD> 26/09/18 22:27 </TD></TR>
+<TR> <TD> i_block_0 </TD> <TD> 8 </TD></TR>
+<TR> <TD> i_block_1 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_2 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_3 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_4 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_5 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_6 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_7 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_8 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_9 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_10 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_11 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_12 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_13 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_block_14 </TD> <TD> -1 </TD></TR>
+<TR> <TD> i_type </TD> <TD> 1 </TD></TR>
+<TR> <TD> i_perm </TD> <TD> 664 </TD></TR>
+</TABLE>>]
+}
+inodo_7->bloque_8;
+bloque_8 [ shape=none,label=< <TABLE> <TR> <TD COLSPAN="2"> Bloque de Archivo 8 </TD></TR>
+<TR> <TD COLSPAN="2"> 0123456789 </TD></TR>
+</TABLE>>]
+
+}

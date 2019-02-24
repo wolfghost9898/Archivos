@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0091ea"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="131dp"
+        android:text="Usuario"
+        android:textColor="#fff"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-16dp"
+        android:layout_marginTop="223dp"
+        android:text="Contraseña"
+        android:textColor="#fff"/>
+
+    <EditText
+        android:id="@+id/usuarioLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:textColor="#fff"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/contraseniaLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/usuarioLogin"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="214dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#fff"/>
+
+    <Button
+        android:id="@+id/loginUsuario"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="125dp"
+        android:text="Login"
+        android:textColor="#40c4ff"/>
+
+    <Button
+        android:id="@+id/botonRegister"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:background="@null"
+        android:text="¿No tienes una cuenta aun?" />
+</RelativeLayout>

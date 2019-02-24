@@ -1,0 +1,135 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Jugadores/Tecnicos</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/jugadoresTecnicosEdadM/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col">
+                                                <input autocomplete="off"  class="form-control form-control-lg form-control-borderless" type="number" id="edad" value="0" name="edad">
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Jugadores/Tecnicos</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Tipo</th>
+                               <th>Posicion</th>
+                               <th>Pais</th>
+                               <th>Edad</th>
+                               <th>Equipo</th>
+                               </thead>
+                                <tbody>
+                                {% for Tecnico in Tecnico %}
+                                 {% if not Tecnico.Nombre == ""   %}
+                                     {% if  Tecnico.age > Edad %}
+                                         <tr>
+                                         <td>{{ Tecnico.Nombre }}</td>
+                                        <td>Tecnico</td>
+                                        <td>--</td>
+                                         <td>{{ Tecnico.Pais.nombre }}</td>
+                                         <td>{{  Tecnico.age }}</td>
+                                         <td>{{  Tecnico.Equipo.Nombre }}</td>
+                                        </tr>
+                                      {% endif %}
+                                 {% endif %}
+                             {% endfor %}
+         {% for Jugador in Jugador %}
+             {% if not Jugador.Nombre == ""  and Jugador.age > Edad %}
+                 <tr>
+                 <td>{{ Jugador.Nombre }}</td>
+                <td>Jugador</td>
+                <td>{{ Jugador.Posicion }}</td>
+                  <td>{{ Jugador.Pais.nombre }}</td>
+                 <td>{{ Jugador.age }}</td>
+                 <td>{{  Jugador.Equipo.Nombre }}</td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+
+     {% if buscandoM %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Jugadores/Tecnicos</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Tipo</th>
+                               <th>Posicion</th>
+                               <th>Pais</th>
+                               <th>Edad</th>
+                               <th>Equipo</th>
+                               </thead>
+                                <tbody>
+                                {% for Tecnico in Tecnico %}
+                                 {% if not Tecnico.Nombre == ""   %}
+                                     {% if  Tecnico.age < Edad %}
+                                         <tr>
+                                         <td>{{ Tecnico.Nombre }}</td>
+                                        <td>Tecnico</td>
+                                        <td>--</td>
+                                         <td>{{ Tecnico.Pais.nombre }}</td>
+                                         <td>{{  Tecnico.age }}</td>
+                                         <td>{{  Tecnico.Equipo.Nombre }}</td>
+                                        </tr>
+                                      {% endif %}
+                                 {% endif %}
+                             {% endfor %}
+         {% for Jugador in Jugador %}
+             {% if not Jugador.Nombre == ""  and Jugador.age < Edad %}
+                 <tr>
+                 <td>{{ Jugador.Nombre }}</td>
+                <td>Jugador</td>
+                <td>{{ Jugador.Posicion }}</td>
+                  <td>{{ Jugador.Pais.nombre }}</td>
+                 <td>{{ Jugador.age }}</td>
+                 <td>{{  Jugador.Equipo.Nombre }}</td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+ {% endblock pages %}

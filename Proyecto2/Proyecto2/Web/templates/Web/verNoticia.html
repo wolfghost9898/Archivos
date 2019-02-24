@@ -1,0 +1,77 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ noticia.Titulo }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/editNoticia/" method="post">
+    {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body">
+
+                <ul class="list-group list-group-flush">
+                    <input type="hidden" name="id" value="{{ noticia.id }}">
+                </ul>
+                <div class="card-body">
+                    <div class="form-group row">
+                                    <label for="titulo" class="col-md-4 col-form-label text-md-right">Titulo</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="titulo" class="form-control" name="titulo"  autocomplete="off" value="{{ noticia.Titulo }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="equipo" class="col-md-4 col-form-label text-md-right" >Equipo</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="equipo" required >
+                                            {% for Equipo in Equipo %}
+                                                {% if Equipo == noticia.Equipo %}
+                                                    <option selected value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Equipo.id }}">{{ Equipo.Nombre }}</option>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <li class="list-group-item">
+                                    <label for="noticia">Noticia</label>
+                                    <textarea  style="resize:none" rows = "10" cols = "60" name = "noticia" class="form-control" >
+                                        {{ noticia.Cuerpo }}
+                                    </textarea>
+                                </li>
+
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                                </div>
+                        </div>
+                    <button type="submit" name="eliminarNoticia"  class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="actualizarNoticia" class="btn btn-success">Actualizar</button>
+                </div>
+            </div>
+         </div>
+         </div>
+    </form>
+     {% if editado %}
+        <br>
+         <div class="alert alert-success" role="alert">
+             <strong>Exitosamente !</strong> Se han actualizado los datos de la Noticia
+         </div>
+     {% endif %}
+    {% endblock pages %}

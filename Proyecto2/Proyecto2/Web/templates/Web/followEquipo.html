@@ -1,0 +1,57 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ searchEquipo.Nombre }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/editSeguirEquipo/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+         <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <center>
+                    <input type="hidden" value="{{ searchEquipo.id }}" name="id">
+                    <img src="{{ searchEquipo.Logo.url }}" class="img-thumbnail">
+                </center>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <br>
+                        <br>
+                        <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                        <div class="col-md-6">
+                            <input type="text" id="nombre" class="form-control" name="nombre" readonly="true" autocomplete="off" value="{{ searchEquipo.Nombre }}">
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <center>
+                    {% if Siguiendo %}
+                        <button type="submit" name="dejarSeguirEquipo"  class="btn btn-outline-danger">Deja de Seguir</button>
+                    {% else %}
+                        <button type="submit" name="seguirEquipo" class="btn btn-outline-success">Seguir</button>
+                    {% endif %}
+                    </center>
+                </div>
+            </div>
+         </div>
+         </div>
+    </form>
+
+
+     {% if editado %}
+        <br>
+         <div class="alert alert-success" role="alert">
+             <strong>Exitosamente !</strong> Se han empezado a seguir al equipo
+         </div>
+     {% endif %}
+     {% if eliminado %}
+        <br>
+        <div class="alert alert-danger" role="alert">
+            Has dejado de seguir a este equipo
+        </div>
+     {% endif %}
+    {% endblock pages %}

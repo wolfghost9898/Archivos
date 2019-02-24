@@ -1,0 +1,101 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Equipos por Jugador o Tecnico</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/EquipoJugadorTecnico/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="form-group row">
+                                                <label for="jugador" class="col-md-4 col-form-label text-md-right" >Jugador</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" name="jugador" required >
+                                                        {% for Jugadores in Jugadores %}
+                                                            <option value="{{ Jugadores.id }}">{{ Jugadores.Nombre }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                         <div class="form-group row">
+                                                <label for="tecnico" class="col-md-4 col-form-label text-md-right" >Tecnico</label>
+                                                <div class="col-md-10">
+                                                    <select class="form-control" name="tecnico" required >
+                                                        {% for Tecnicos in Tecnicos %}
+                                                            <option value="{{ Tecnicos.id }}">{{ Tecnicos.Nombre }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>º
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Equipos</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Pais</th>
+                               <th>Estuvo</th>
+                               <th>Fecha Inicio</th>
+                               <th>Fecha Fin</th>
+                               </thead>
+                                <tbody>
+                                {% for Jugador in Jugador %}
+                                 {% if not Jugador.Equipo.Nombre == ""  %}
+                                     <tr>
+                                     <td>{{ Jugador.Equipo.Nombre }}</td>
+                                     <td>{{ Jugador.Equipo.Pais.nombre }}</td>
+                                     <td>{{  Jugador.Jugador.Nombre }}</td>
+                                     <td>{{ Jugador.Fecha_inicio }}</td>
+                                     <td>{{ Jugador.Fecha_fin }}</td>
+                                    </tr>
+                                 {% endif %}
+                                {% endfor %}
+                                {% for Tecnico in Tecnico %}
+                                 {% if not Tecnico.Equipo.Nombre == ""  %}
+                                     <tr>
+                                     <td>{{ Tecnico.Equipo.Nombre }}</td>
+                                     <td>{{ Tecnico.Equipo.Pais.nombre }}</td>
+                                     <td>{{  Tecnico.DT.Nombre }}</td>
+                                     <td>{{ Tecnico.Fecha_inicio }}</td>
+                                     <td>{{ Tecnico.Fecha_fin }}</td>
+                                    </tr>
+                                 {% endif %}
+                             {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+ {% endblock pages %}

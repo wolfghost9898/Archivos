@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="700dp">
+
+            <EditText
+                android:id="@+id/nombreRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="83dp"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:text="Nombre" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView18"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_marginTop="41dp"
+                android:text="Apellido" />
+
+            <EditText
+                android:id="@+id/apellidoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView18"
+                android:layout_alignLeft="@id/textView20"
+                android:layout_marginLeft="73dp"
+                android:layout_marginTop="27dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="142dp"
+                android:layout_marginEnd="22dp"
+                android:layout_toStartOf="@+id/correoRegistro"
+                android:text="Correo" />
+
+            <EditText
+                android:id="@+id/correoRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/apellidoRegistro"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="130dp"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="209dp"
+                android:text="Usuario" />
+
+            <EditText
+                android:id="@+id/usuarioRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="198dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/contraseñaRegistro"
+                android:layout_alignEnd="@+id/textView18"
+                android:layout_marginEnd="-15dp"
+                android:text="Contraseña" />
+
+            <EditText
+                android:id="@+id/contraseñaRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/apellidoRegistro"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="273dp"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="316dp"
+                android:layout_toStartOf="@+id/numeroRegistro"
+                android:text="Telefono" />
+
+            <EditText
+                android:id="@+id/numeroRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="53dp"
+                android:layout_marginBottom="305dp"
+                android:ems="10"
+                android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="247dp"
+                android:layout_toStartOf="@+id/direccionRegistro"
+                android:text="Direccion" />
+
+            <EditText
+                android:id="@+id/direccionRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/apellidoRegistro"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="230dp"
+                android:ems="10"
+                android:inputType="textPostalAddress" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView24"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="3dp"
+                android:layout_marginBottom="172dp"
+                android:text="Genero" />
+
+            <Spinner
+                android:id="@+id/generoRegistro"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView26"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="79dp"
+                android:layout_marginBottom="1dp" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView25"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="119dp"
+                android:text="Fecha Nac" />
+
+            <EditText
+                android:id="@+id/fechaRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/apellidoRegistro"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="107dp"
+                android:ems="10"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/guardarRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/nombreRegistro"
+                android:layout_alignBottom="@id/fechaRegistro"
+                android:layout_marginEnd="65dp"
+                android:layout_marginBottom="-71dp"
+                android:text="Guardar" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

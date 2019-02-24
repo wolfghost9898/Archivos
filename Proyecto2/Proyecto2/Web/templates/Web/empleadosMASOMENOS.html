@@ -1,0 +1,82 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Empleados-Noticias</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/empleadosMASOMENOS/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="form-group row">
+                                                <label for="tipo" class="col-md-4 col-form-label text-md-right" >Ha publicado</label>
+                                                <div class="col-md-9">
+                                                    <select class="form-control" name="tipo" required >
+                                                        <option value="1">Mas</option>
+                                                        <option value="0">Menos</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Usuarios</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Nombre</th>
+                                <th>Apellido</th>
+                               <th>Usuario</th>
+                               <th>Cant</th>
+                               </thead>
+                                <tbody>
+                                {% for Usuario in Usuario %}
+                                     <tr>
+                                     <td>{{ Usuario.1 }}</td>
+                                    <td>{{ Usuario.2 }}</td>
+                                     <td>{{  Usuario.3 }}</td>
+                                     <td>{{ Usuario.0 }}</td>
+                                    </tr>
+                             {% endfor %}
+
+
+
+         </tbody>
+        </table>
+ <form action="/Web/empleadosMASOMENOSPDF/" method="post" >
+            {% csrf_token %}
+              <input type="hidden" name="pdfId" value="{{ TipoID }}">
+            <button type="submit" class="btn btn-outline-light">PDF</button>
+ </form>
+     {% endif %}
+ {% endblock pages %}

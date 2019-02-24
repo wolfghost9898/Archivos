@@ -1,0 +1,4 @@
+exec,exec
+-path->,path
+/home/wolfghost/Escritorio/Entrada2.sh,palabra
+finInstruccion,finInstruccion

@@ -1,0 +1,45 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ SearchUser.Nombre }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/EditUsers/" method="post">
+    {% csrf_token %}
+         <div class="d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ SearchUser.Imagen.url }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ SearchUser.Usuario }}</h5>
+                    <input type="hidden" name="Usuario" value="{{ SearchUser.Usuario }}">
+                </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: {{ SearchUser.Nombre }}</li>
+                    <li class="list-group-item">Apellido: {{ SearchUser.Apellido }}</li>
+                    <li class="list-group-item">Telefono: {{ SearchUser.Telefono }}</li>
+                    <li class="list-group-item">Direccion: {{ SearchUser.Direccion }}</li>
+                    <li class="list-group-item">Fecha de Nacimiento: {{ SearchUser.Fecha_Nac|date:"d-m-Y" }}</li>
+                    <li class="list-group-item">
+                        <label for="description">Razon el cambio:</label>
+                        <textarea  style="resize:none" rows = "5" cols = "60" name = "description" class="form-control" required>
+                        </textarea>
+                    </li>
+                 </ul>
+                <div class="card-body">
+                    <button type="submit" name="eliminarUsuario"  class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="CongelarUsuario" class="btn btn-warning">Congelar</button>
+
+                 </div>
+                <div class="card-body">
+                    <button type="submit" name="ActivarUsuario" class="btn btn-success">Activar</button>
+                 </div>
+            </div>
+         </div>
+    </form>
+    {% endblock pages %}

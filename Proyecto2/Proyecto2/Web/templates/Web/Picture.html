@@ -1,0 +1,57 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Mi cuenta</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+            <main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/Web/EditProfile/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <center>
+                                    <img src="{{    Usuario.Imagen.url  }}" class="img-thumbnail" width="400" height="400"/>
+                                </center>
+                                <br>
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01" required aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                {% if Exito %}
+                                    <br>
+                                    <div class="alert alert-success" role="alert">
+                                          <strong>Exitosamente !</strong> Se han actualizado tus datos
+                                    </div>
+                                {% endif %}
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Guardar Cambios
+                                    </button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+    {% endblock pages %}

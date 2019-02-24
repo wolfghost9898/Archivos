@@ -1,0 +1,47 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Membresia</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+<br>
+<div class="intro-header">
+    <div class="container"  align="center" style="background-color: #EAEAEA">
+    <br>
+    <div class="tab-content custom-tab-content" align="center">
+        <div class="subscribe-panel">
+        {% if Membresia == 0 %}
+            <h2>Plan Gratuito</h2>
+            <p>Subscribete para obtener una mejor experiencia en nuestra Plataforma</p>
+        {% else %}
+            <h2> Plan Premium</h2>
+            <p> Eres un usuario Premiun </p>
+        {% endif %}
+            <form action="/Web/comprarMembresia/" method="post">
+                {% csrf_token %}
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                {% if Membresia == 0 %}
+                    <button class="btn btn-warning btn-lg" name="SuscribirseAhora" type="submit">Suscribirse Ahora</button>
+                {% else %}
+                    <button type="submit" name="EliminarSubscripcion" class="btn btn-outline-danger">Cancelar Subscripcion</button>
+                {% endif %}
+            </form>
+    <br>
+    </div>
+</div>
+
+
+
+
+
+    {% endblock pages %}

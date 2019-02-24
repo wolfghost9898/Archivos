@@ -1,0 +1,2 @@
+Logout,logout
+finInstruccion,finInstruccion

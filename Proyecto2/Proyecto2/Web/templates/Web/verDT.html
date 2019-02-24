@@ -1,0 +1,95 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>{{ searchDT.Nombre }}</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <br>
+    <form action="/Web/editDT/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+         <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <center>
+                    <img src="{{ searchDT.Foto.url }}" class="img-thumbnail">
+                </center>
+                <div class="card-body">
+                   <div class="form-group row">
+                                    <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="nombre" class="form-control" name="nombre"  autocomplete="off" value="{{ searchDT.Nombre }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="estado" class="col-md-4 col-form-label text-md-right">Estado</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="estado" class="form-control" name="estado"  autocomplete="off" value="{{ searchDT.Estado }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fechanac" class="col-md-4 col-form-label text-md-right">Fecha Nacimiento</label>
+                                    <div class="col-md-6">
+                                        <input type="Date" id="fechanac" class="form-control" name="fechanac"  autocomplete="off" value="{{ searchDT.Fecha_nac|date:"Y-m-d" }}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="equipo" class="col-md-4 col-form-label text-md-right">Equipo</label>
+                                    <div class="col-md-6">
+                                        <input type="text" readonly="true" id="equipo" class="form-control" name="equipo"  autocomplete="off" value="{{ searchDT.Equipo.Nombre}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="pais" class="col-md-4 col-form-label text-md-right" >Pais</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="pais" required >
+                                            {% for Pais in Pais %}
+                                                {% if Pais == searchDT.Pais %}
+                                                    <option selected value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                {% else %}
+                                                    <option value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                      </div>
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01"  aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Subir Archivo</label>
+                                      </div>
+                                    </div>
+                <ul class="list-group list-group-flush">
+                    <input type="hidden" name="id" value="{{ searchDT.id }}">
+                </ul>
+                <div class="card-body">
+                    <button type="submit" name="eliminarDT"  class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="actualizarDT" class="btn btn-success">Actualizar</button>
+                </div>
+            </div>
+         </div>
+         </div>
+         </div>
+    </form>
+
+
+     {% if editado %}
+        <br>
+         <div class="alert alert-success" role="alert">
+             <strong>Exitosamente !</strong> Se han actualizado los datos del DT
+         </div>
+     {% endif %}
+    {% endblock pages %}

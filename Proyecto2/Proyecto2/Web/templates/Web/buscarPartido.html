@@ -1,0 +1,98 @@
+{% extends 'Web/home.html' %}
+{% block head %}
+    <title>Partido</title>
+{% endblock %}
+{% block body %}
+{% with client=var %}
+    {{ block.super }}
+{% endwith %}
+
+{% endblock %}
+ {% block pages %}
+     <form action="/Web/buscarPartido/" method="post" >
+         {% csrf_token %}
+        <div class="container">
+            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <form class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i class="fas fa-search h4 text-body"></i>
+                                            </div>
+                                            <!--end of col-->
+                                            <div class="col">
+                                                <input autocomplete="off"  class="form-control form-control-lg form-control-borderless" type="date"  name="fecha">
+
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group row">
+                                                    <label for="pais" class="col-md-4 col-form-label text-md-right" >Pais</label>
+                                                    <div class="col-md-6">
+                                                        <select class="form-control" name="pais" required >
+                                                            {% for Pais in Pais %}
+                                                                <option value="{{ Pais.id }}">{{ Pais.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--end of col-->
+                                            <div class="col-auto">
+                                                <button class="btn btn-lg btn-success" type="submit">Buscar</button>
+                                            </div>
+                                            <!--end of col-->
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--end of col-->
+                            </div>
+            </div>
+     </form>
+     {% if error %}
+         <div class="alert alert-danger">
+              <strong>ERROR </strong> No se encontro ningun Equipo con ese nombre
+         </div>
+     {% endif %}
+     {% if buscando %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4>Equipos</h4>
+                    <div class="table-responsive">
+                          <table id="mytable" class="table table-bordred table-striped">
+                               <thead>
+                               <th>Equipo Local</th>
+                                <th>Equipo Visitante</th>
+                               <th>Estado</th>
+                               <th>Resultado</th>
+                               <th>Estadio</th>
+                               <th>Competencia</th>
+                               <th>Incidencias</th>
+                               <th>Accion</th>
+                               </thead>
+                                <tbody>
+         {% for Partido in Partido %}
+             {% if not Partido.Resultado == ""  %}
+                 <tr>
+                 <td>
+                        {{ Partido.EquipoLocal.Nombre }}
+                 </td>
+                <td>{{ Partido.EquipoVisita.Nombre }}</td>
+                 <td>{{ Partido.Estado }}</td>
+                 <td>{{ Partido.Resultado }}</td>
+                 <td>{{ Partido.Estadio.Nombre }}</td>
+                 <td>{{ Partido.Competencia.Nombre }}</td>
+                 <td><a href="{% url 'viewIncidencia' slug=Partido.id %}">
+                        Ver
+                </a> / <a href="{% url 'viewAgregarIncidencia' slug=Partido.id %}">
+                        Agregar
+                </a> </td>
+                     <td><a href="{% url 'viewPartido' slug=Partido.id %}">Editar</a></td>
+                </tr>
+             {% endif %}
+         {% endfor %}
+         </tbody>
+        </table>
+     {% endif %}
+ {% endblock pages %}
